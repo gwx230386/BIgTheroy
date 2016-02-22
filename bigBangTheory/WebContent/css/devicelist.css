@@ -1,0 +1,100 @@
+html, body {
+   height: 100%;
+}
+.istk-container{height:95%;margin-top:0px;padding-top:70px;}
+.istk-container .allh{height:100%}
+#device-map{width:100%;height:100%}
+#info-panel{width:950px;font-size:12px;position: absolute;background-color: #FFF; box-shadow:1px 0px 5px 3px #666;
+    display: none; min-height: 600px; padding: 0px; z-index: 99999; border-radius: 4px; }
+.action-bar{padding-bottom:7px;border-bottom:solid 1px #ccc;position: relative}
+.action-bar .title{position: absolute;top: 8px;width: 250px;left:50%;margin-left:-125px; text-align: center;font-size:14px;color:#666}
+#chart-container { height: 94%; }
+#chart-time-control{position: absolute;top:49px;left:0px;z-index:1}
+#chart-time-control .btn-group{width:92px;float:left}
+#chart-time-control .btn{padding:2px 5px;font-size:12px;}
+#chart-time-control .btn .active{font-weight:bold}
+#chart-time-control .time-range{float:left;margin-left:10px;}
+#chart-time-control .time-range input{height:23px;font-size:12px;padding:2px 6px;line-height:100%;width:90px;float:left}
+#chart-time-control .time-range input[type='checkbox']{width:13px;}
+#chart-time-control .time-range > *{float:left}
+#chart-time-control .time-range label{margin:3px 5px 0px 5px}
+#chart-time-control .time-range a{height:23px;margin-left:5px;}
+.echarts-dataview > p{font-size:14px;padding-left:10px;}
+#params-group ul > li > a:hover{background-color:rgb(66,139,202)}
+
+.panel-backend{transform: rotate3d(0,1,0,-180deg);background-color:#fff;position: absolute;right:7px;left:7px;bottom:7px;top:7px;display:none}
+.panel-front{z-index: 1;transform: rotate3d(0,1,0,0deg);background-color:#fff;position: absolute;right:7px;left:7px;bottom:7px;top:7px}
+.fliped{z-index: 0;transform: rotate3d(0,1,0,-180deg);transition-duration: 0.8s;}
+.flip{z-index: 1;transform: rotate3d(0,1,0,0deg);transition-duration: 0.8s;}
+.slogan{display: inline-block;height:30px;margin-bottom:0px;font-size: 16px;padding-top: 5px;}
+.device-detail{float:left;margin-left:20px;margin-top:7px;}
+.device-detail span.info{}
+.panel-backend .row{margin-top:20px;}
+#weather{margin-top:40px;}
+#weather p span{font-size:18px;}
+
+.popover{max-width: 1024px !important;}
+.popover-content{overflow: ;}
+.param-choice{margin-bottom:10px;width:320px;overflow:}
+.param-choice .checkbox{width:120px;margin-left:25px !important;float:left}
+.param-choice input{height:auto !important;}
+.popover-title{padding: 5px 10px;font-size:12px;}
+
+#weather .body{position: relative}
+#weather .time-scale {overflow:;height:4px;width:300px;}
+#weather .time-scale span{display:inline-block;border-left:1px solid #000;border-right:1px solid #000;
+    width:50px;height:4px;float:left}
+#weather .time-info{height:14px;overflow:;line-height:14px;}
+#weather .time-info span{float:left}
+#weather .time-info span:first-child{margin-left:31px;}
+#weather .time-info span.mid{margin-left: 68px;}
+#weather .time-info span:last-child{float:right;margin-right:75px;}
+#weather .rf{width:300px;height:160px;margin-top:-178px;}
+#weather .rf div{border-top: dotted 1px #ccc;height:53px;line-height:53px;text-align: right;}
+#weather .rf div span{margin-right:-32px;}
+#weather .rf div:first-child{border-top:none}
+#skyicon{position:absolute; right:30px; top:-35px;}
+#rainfall{width:300px;height:160px;margin-top:40px;border-bottom:2px solid #000;border-right:dotted 1px #ccc;position:relative;}
+#rainfall div{position: absolute;width:5px;background-color: rgb(166,194,222);bottom:0px;}
+#device-list span{font-size:12px;color:#666;}
+
+#accordion{height:100%;margin-bottom:0px;}
+#accordion .panel{margin-top:0px;border-radius: 0px;}
+#accordion .panel-heading{padding:10px 10px 8px 10px;border-radius:0}
+#accordion .panel-title{font-size:14px;font-weight:bold;}
+#accordion .panel-title a{text-decoration: none}
+#accordion .panel-body{border-top:none;padding:0;}
+#accordion .panel+.panel{border-top: none}
+.device-list li{font-size:12px;cursor: pointer;padding:4px 10px 4px 15px;}
+.device-list li:hover{color:#fff;background-color: rgb(167,194,221)}
+.device-list li .alias{color:#666;display:block;height:18px;position: relative}
+.device-list li .alias input{border:none;font-size:12px;width:100%;background-color: transparent;cursor: pointer;}
+.device-list li .alias .alias-modify{position: absolute; display:none;right:0px;top:1px;}
+.device-list li.active{background-color: rgb(81,153,218)}
+.device-search{position: relative}
+.device-search input{border-radius:0;font-size:12px;}
+.device-search a{position: absolute;right:5px;top:2px;font-size:20px;}
+.list-wrapper{max-height:0px;position: relative;overflow:hidden}
+.device-info-template{width:260px;height:100px;}
+#device-info { width: 302px; height: 150px; display: block !important; padding: 10px 15px; font-size: 12px; position: relative; background: #FFFFFF; border-radius: 4px; border: solid 1px #CCCCCC }
+#device-info span { display: block; }
+#device-info a { text-decoration: none; position: absolute; bottom: 5px; text-align: center }
+#device-info .cert { bottom: -12px; position: absolute; left: 143px; color: #000000 }
+#device-info .cls{cursor: pointer;font-size: 18px; top: -8px; right: -8px; position: absolute;}
+#device-info .qrscan{position: absolute;right:20px;top:10px;}
+#device-info .qrscan img{width:90px;border:0;height: 90px;}
+#device-info .qrscan span{line-height: 20px; margin-top: 5px;}
+
+.none_loc_popwindow{position:absolute !important; top:0; left:0; width:230px; z-index:9999;background-color: #fff;
+border-radius: 4px;border:solid 1px #ccc;height: 130px;width: 260px;}
+.none_loc_popwindow a{bottom:7px !important;}
+#device-info .non-loc{font-size:12px;float:right}
+.mr10{margin-right:10px;}
+.ml10{margin-left:10px;}
+
+#user-bind-dialog .modal-dialog{width:800px;}
+.dev-nav .panel-title span { font-size: 12px; font-weight: normal; }
+.amap-maptype-title { width: 54px !important; height: 17px !important; opacity: 0.7; margin-left: 2px; line-height: 17px !important; }
+.amap-maptype-list { display: none !important; }
+#InputsWrapper .input-group{padding-bottom: 8px;}
+.input-plus {position: relative; left: 8px; bottom: 32px; font-size: 15px;}

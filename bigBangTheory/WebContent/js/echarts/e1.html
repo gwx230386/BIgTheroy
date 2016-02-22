@@ -1,0 +1,138 @@
+﻿<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+     <script src="js/esl.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+     <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths:{ 
+                'echarts' : 'js/echarts',
+                'echarts/chart/pie' : 'js/echarts'
+            }
+        });
+        
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+               option = {
+    title : {
+        text: '土壤水分变化',
+        subtext: '如有雷同，纯属巧合-Zsj'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['10cm水分','20cm水分','30cm水分','40cm水分']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['2015-09-30 08:00:00','2015-09-30 09:00:00','2015-09-30 10:00:00','2015-09-30 11:00:00','2015-09-30 12:00:00','2015-09-30 13:00:00','2015-09-30 14:00:00','2015-09-30 15:00:00','2015-09-30 16:00:00','2015-09-30 17:00:00','2015-09-30 18:00:00']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value} %'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'10cm水分',
+            type:'line',
+            data:[3, 4, 5, 7, 3, 8, 10, 3, 5, 8, 4],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+        {
+            name:'20cm水分',
+            type:'line',
+            data:[5, 7, 4, 10, 6, 8, 4, 6, 7, 5, 9],
+            markPoint : {
+                data : [
+                    {name : '日最低', value : -2, xAxis: 1, yAxis: -1.5}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name : '平均值'}
+                ]
+            }
+        },
+        {
+            name:'30cm水分',
+            type:'line',
+            data:[7, 8, 6, 7, 3, 15, 15, 12, 10, 16, 13],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+        {
+            name:'40cm水分',
+            type:'line',
+            data:[11, 11, 15, 13, 12, 13, 10, 14, 16, 14, 18],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        }
+    ]
+};
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>

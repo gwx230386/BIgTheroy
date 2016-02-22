@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 登录 -->
+	<bean id="deviceManageDao" class="com.metarnet.systemManage.dao.impl.DeviceManageDaoImpl"
+		parent="jdbcDataDao">
+	</bean>
+	<bean id="deviceManageService" class="com.metarnet.systemManage.service.impl.DeviceManageServiceImpl">
+		<property name="deviceManageDao" ref="deviceManageDao"></property>
+	</bean>
+	<bean id="deviceManageAction" class="com.metarnet.systemManage.action.DeviceManageAction"
+		scope="prototype">
+		<property name="deviceManageService" ref="deviceManageService"></property>
+	</bean>
+
+	<!-- 上传bean -->
+	<bean id="upLoadDao" class="com.metarnet.systemManage.dao.impl.UpLoadDaoImpl"
+		parent="jdbcDataDao">
+	</bean>
+	<bean id="upLoadService"
+		class="com.metarnet.systemManage.service.impl.UpLoadServiceImpl">
+		<property name="upLoadDao" ref="upLoadDao"></property>
+	</bean>
+	<bean id="upLoadAction" class="com.metarnet.systemManage.action.UpLoadAction"
+		scope="prototype">
+		<property name="upLoadService" ref="upLoadService"></property>
+
+	</bean>
+	
+	<!-- 验证码bean -->
+	<bean id="checkCodeAction" class="com.metarnet.systemManage.action.AuthCodeAction"
+		scope="prototype">
+	</bean>
+</beans>

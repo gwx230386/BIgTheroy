@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="main" extends="struts-default">
+
+		<!-- 登录action -->
+		<action name="login_*" class="loginAction" method="{1}">
+			<result name="toLoginPage">WEB-INF/mainPage/login.jsp</result>
+			<result name="toRegisterPage">WEB-INF/mainPage/register.jsp</result>
+			<result name="toIndex">index.jsp</result>
+			<result name="emailVerify">WEB-INF/mainPage/emailVerfiy.jsp</result>
+			<result name="resetPassword">WEB-INF/mainPage/resetPassword.jsp</result>
+		</action>
+         
+        <!-- 上传action -->
+		<action name="upLoad_*" class="upLoadAction" method="{1}">
+           	<result name="downloadAttachment">download.jsp</result>
+		</action>
+		
+		 <!-- 验证码action -->
+		<action name="checkCode_*" class="checkCodeAction" method="{1}">
+		</action>
+		
+		<action name="httpRequestAction_*" class="httpRequestAction"  method="{1}">
+		</action>
+	</package>
+</struts>    

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- ========================== 自定义输出格式说明================================ -->
+	<!-- %p 输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL -->
+	<!-- %r 输出自应用启动到输出该log信息耗费的毫秒数  -->
+	<!-- %c 输出所属的类目，通常就是所在类的全名.%d{Num} ,Num类名输出的范围,如："org.apache.elathen.ClassName",%c{2}将输出elathen.ClassName  -->
+	<!-- %t 输出产生该日志事件的线程名 -->
+	<!-- %m 输出代码指定信息，如info("message"),输出message -->
+	<!-- %n 输出一个回车换行符，Windows平台为“\r\n”，Unix平台为“\n” -->
+	<!-- %d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日 22：10：28，921  -->
+	<!-- %l 输出日志事件的发生位置，在代码中的行数。举例：Testlog4.main(TestLog4.java:10)  -->
+	<!-- ========================================================================== -->
+
+	<!-- ========================== 输出方式说明================================ -->
+	<!-- Log4j提供的appender有以下几种:  -->
+	<!-- org.apache.log4j.ConsoleAppender(控制台),  -->
+	<!-- org.apache.log4j.FileAppender(文件),  -->
+	<!-- org.apache.log4j.DailyRollingFileAppender(每天产生一个日志文件), -->
+	<!-- org.apache.log4j.RollingFileAppender(文件大小到达指定尺寸的时候产生一个新的文件),  -->
+	<!-- org.apache.log4j.WriterAppender(将日志信息以流格式发送到任意指定的地方)   -->
+	<!-- ========================================================================== -->
+
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss} %p (%c{1}:%L) - %m%n" />
+		</layout>
+		<!--过滤器设置输出的级别-->       
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">       
+            <param name="levelMin" value="info" />       
+            <param name="levelMax" value="error" />       
+            <param name="AcceptOnMatch" value="true" />       
+        </filter> 
+	</appender>
+	
+	<!-- 下面是使用DailyRollingFileAppender的写法，配置完成的当天， 会在Tomcat的logs目录下 -->
+	<appender name="File_Daily" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/insentek.log" />
+		<param name="Append" value="true" />
+		  <!-- 指定日志输出级别 -->
+<!--         <param name="Threshold" value="INFO"/>  -->
+		<param name="DatePattern" value="'_'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p (%c{1}:%L) - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+    
+	<!-- jdbcTemplate打印日志         日志输出地 
+   <logger name="org.springframework.jdbc.core" additivity="true">  
+        <level value="DEBUG" />  
+        <appender-ref ref="Console" />  
+        <appender-ref ref="File_Daily" />  
+        
+    </logger> -->
+
+	<!-- =========================struts2 begin====================== -->
+	<category name="com.opensymphony.xwork2.ognl.OgnlValueStack">
+		<priority value="ERROR" />
+	</category>
+	<!-- =========================struts2 end====================== -->
+
+	<!-- 设置接受所有的输出通道（等级INFO的日志以Console等方式输出） -->
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="Console" />
+		<appender-ref ref="File_Daily" />
+	</root>
+
+</log4j:configuration>
